@@ -31,18 +31,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/app.min.css').lstrip('/') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.css">
     <script src="{{ url_for('static', filename='js/vendor/modernizr.custom.js').lstrip('/') }}"></script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.7&appId=136879603055272";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
   </head>
   <body id="top">
     <div class="wrapper">
       <!-- Header -->
       <header id="header">
         <a href="#nav"><span class="label">Options</span></a>
-        <h1><a href="#">Pokémon Go Map</a> - <a href="https://www.facebook.com/Pokemap-Champagne-Ardenne-300587453629386" target="_blank">Facebook</a></h1>
+        <h1><a href="#">Pokémap-CA</a><div class="fb-like" data-href="https://www.facebook.com/Pokemap-Champagne-Ardenne-300587453629386" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div></h1>
         <a href="#stats" id="statsToggle" class="statsNav" style="float: right;"><span class="label">Stats</span></a>
       </header>
       <!-- NAV -->
       <nav id="nav">
-        <a href="https://www.facebook.com/Pokemap-Champagne-Ardenne-300587453629386" target="_blank">Facebook</a>
         <div id="nav-accordion">
           <h3>Marker Settings</h3>
           <div>
