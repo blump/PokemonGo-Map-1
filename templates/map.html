@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>PokémoMap-CA</title>
+    <meta property="fb:app_id" content="1153395174699384" />
     <meta property="og:title" content="PokeMap - Champagne-Ardenne - Aide localisation pokemons" />
     <meta property="og:url" content="https://pokemap-ca.yooqe.fr/" />
     <meta property="og:image" content="https://pokemap-ca.yooqe.fr/static/images/pokemap.jpg" />
@@ -10,7 +11,6 @@
     <meta property="og:description"
           content="Aide à la localisation des pokemons dans les grandes villes de Champagne-Ardenne" />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="fb:app_id" content="1153395174699384" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -46,6 +46,23 @@
   </head>
   <body id="top">
   <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1153395174699384',
+        xfbml      : true,
+        version    : 'v2.7'
+      });
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
