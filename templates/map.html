@@ -2,7 +2,7 @@
 <html lang="{{lang}}">
   <head>
     <meta charset="utf-8">
-    <title>Pokémon Go Map</title>
+    <title>PokémoMap-CA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -28,7 +28,11 @@
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='appicons/152x152.png').lstrip('/') }}" sizes="152x152">
     <!-- retina iPhone 6 iOS 7 -->
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='appicons/180x180.png').lstrip('/') }}" sizes="180x180">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/app.min.css').lstrip('/') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css').lstrip('/') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css').lstrip('/') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.css">
     <script src="{{ url_for('static', filename='js/vendor/modernizr.custom.js').lstrip('/') }}"></script>
   </head>
@@ -41,15 +45,11 @@
     js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.7&appId=1153395174699384";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
-  <div class="fb-like" data-href="https://www.facebook.com/Pokemap-Champagne-Ardenne-300587453629386" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
-  <a href="https://www.facebook.com/Pokemap-Champagne-Ardenne-300587453629386" target="_blank">
-    <svg viewBox="0 0 512 512" width="25" height="25"><path d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"></path></svg>
-  </a>
-  <div class="wrapper">
+  <div class="wrapper col-sm-9 nopadding">
       <!-- Header -->
       <header id="header">
         <a href="#nav"><span class="label">Options</span></a>
-        <h1><a href="#">Pokémap-CA</a></h1>
+        <h1><a href="#">PokeMap-CA</a></h1>
         <a href="#stats" id="statsToggle" class="statsNav" style="float: right;"><span class="label">Stats</span></a>
       </header>
       <!-- NAV -->
@@ -122,57 +122,6 @@
               </label>
             </div>
           </div>
-
-          <h3>Location Settings</h3>
-          <div>
-            <div class="form-control switch-container" style="display:{{is_fixed}}" >
-              <label for="next-location">
-              <h3>Change scan location</h3>
-              <input id="next-location" type="text" name="next-location" placeholder="Change your location">
-              </label>
-            </div>
-            <div class="form-control switch-container" style="display:{{is_fixed}}" >
-              <h3>Lock marker</h3>
-              <div class="onoffswitch">
-                <input id="lock-marker-switch" type="checkbox" name="lock-marker-switch" class="onoffswitch-checkbox" checked/>
-                <label class="onoffswitch-label" for="lock-marker-switch">
-                <span class="switch-label" data-on="On" data-off="Off"></span>
-                <span class="switch-handle"></span>
-                </label>
-              </div>
-            </div>
-            <div class="form-control switch-container" style="display:{{is_fixed}}" >
-              <h3>Scan follows location</h3>
-              <div class="onoffswitch">
-                <input id="geoloc-switch" type="checkbox" name="geoloc-switch" class="onoffswitch-checkbox" checked/>
-                <label class="onoffswitch-label" for="geoloc-switch">
-                <span class="switch-label" data-on="On" data-off="Off"></span>
-                <span class="switch-handle"></span>
-                </label>
-              </div>
-            </div>
-            <div class="form-control switch-container" >
-              <h3>Start at user's location</h3>
-              <div class="onoffswitch">
-                <input id="start-at-user-location-switch" type="checkbox" name="start-at-user-location-switch" class="onoffswitch-checkbox" checked/>
-                <label class="onoffswitch-label" for="start-at-user-location-switch">
-                <span class="switch-label" data-on="On" data-off="Off"></span>
-                <span class="switch-handle"></span>
-                </label>
-              </div>
-            </div>
-            <div class="form-control switch-container" style="display:{{search_control}}">
-              <h3>Search</h3>
-              <div class="onoffswitch">
-                <input id="search-switch" type="checkbox" name="search-switch" class="onoffswitch-checkbox" checked/>
-                <label class="onoffswitch-label" for="search-switch">
-                <span class="switch-label" data-on="On" data-off="Off"></span>
-                <span class="switch-handle"></span>
-                </label>
-              </div>
-            </div>
-          </div>
-
           <h3>Notification Settings</h3>
           <div>
             <div class="form-control">
@@ -203,26 +152,6 @@
             </div>
           </div>
 
-          <h3>Style Settings</h3>
-          <div>
-            <div class="form-control switch-container">
-              <h3>Map Style</h3>
-              <select id="map-style"></select>
-            </div>
-            <div class="form-control switch-container">
-              <h3>Icons</h3>
-              <select name="pokemon-icons" id="pokemon-icons"></select>
-            </div>
-            <div class="form-control switch-container">
-              <h3>Icon Size</h3>
-              <select name="pokemon-icon-size" id="pokemon-icon-size">
-                <option value="-8">Small</option>
-                <option value="0">Normal</option>
-                <option value="10">Large</option>
-                <option value="20">X-Large</option>
-              </select>
-            </div>
-          </div>
         </div>
       </nav>
       <nav id="stats">
@@ -243,11 +172,31 @@
         </div>
       </nav>
       <div id="map"></div>
+      <a href="https://www.facebook.com/pokemapchampagneardenne" class="fb" target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
     </div>
+  <div class="wrapper col-sm-3 nopadding">
+    <div class="text-right">
+      <h3>PokeMap-CA</h3>
+      <p>
+        PokeMap-CA est une plateforme permettant de géolocaliser les pokemons dans les grandes villes de Champagne-Ardenne.</p>
+        <h4 style="color:#FFFFFF;">COMMENT ÇA MARCHE ?</h4>
+      <p>PokeMap-CA balaie toutes les 6 minutes certaines villes en Champagne-Ardenne. Nous traitons les données, puis nous les plaçons sur la carte à votre gauche.</p>
+        <h4 style="color:#FFFFFF;">OU ÇA MARCHE ?</h4>
+      <p>Reims, Charleville-Mézières, Châlons en Champagne, Rethel. ( pour le moment ).</p>
+        <h4 style="color:#FFFFFF;">LOCALISATION</h4>
+      <p>Vous pouvez cliquer sur l'icone <img src="{{ url_for('static', filename='images/localisation.png').lstrip('/') }}" width="20px" alt="se localiser"></img> en bas à droite de la carte pour vous localisez automatiquement sur la carte.
+      Sur mobile, pensez à autoriser le service de localisation pour votre navigateur.</p>
+      </p>
+      <p><div class="fb-like" data-href="https://www.facebook.com/pokemapchampagneardenne/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></p>
+    </div>
+  </div>
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.9.1/polyfill.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="{{ url_for('static', filename='dist/js/app.min.js').lstrip('/') }}"></script>
